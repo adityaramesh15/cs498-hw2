@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "@google-cloud/datastore": "^10.1.0",
+    "@google-cloud/firestore": "^8.3.0",
     "express": "^5.2.1"
   }
 }
