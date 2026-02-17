@@ -39,3 +39,17 @@ That was evident in the fact that the higher-count queries were still quicker, o
 A short 10-run test was done last to demonstarte the differences between cold and warm servers. 
 
 
+Consistency Results: 
+--- Results ---
+Consistent (No Lag):   100
+Inconsistent (Lag):    0
+Errors:                0
+Replication Lag Rate:  0.0%
+
+
+Consistency Analysis
+While I did expect there to be some inconsistent behavior, I was not able to record this occuring. I believe it to be a result of my network
+speed being slower than google's fiber connection, as there mightve been a large amount of time between when I posted and then did a get from 
+europe that was simply longer than google updating consistency of the Firestore DB across its nodes and it being accessed by the european compute instance. 
+I trie to use asynchrnous code as well to alleviate any slow behavior due to serial porgramming as well, but I had no luck in that regard either. I could
+see thsi going faster and catching the inconsistent behavior only if I was running the benchmark on a european VM itself as well. 
