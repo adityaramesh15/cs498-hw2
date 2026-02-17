@@ -1,0 +1,41 @@
+Latency Results:
+
+python3 latency.py (10 Runs)
+--- Results (Seconds) ---
+US /register Avg:     0.2500s
+EU /register Avg:     0.5374s
+US /list Avg:         5.7102s
+EU /list Avg:         13.7215s
+
+
+python3 latency.py (50 Runs)
+--- Results (Seconds) ---
+US /register Avg:     0.0629s
+EU /register Avg:     0.2397s
+US /list Avg:         2.7689s
+EU /list Avg:         4.5843s
+
+
+python3 latency.py (100 Runs)
+--- Results (Seconds) ---
+US /register Avg:     0.0769s
+EU /register Avg:     0.3684s
+US /list Avg:         0.2514s
+EU /list Avg:         0.4180s
+
+
+python3 latency.py (10 Runs)
+--- Results (Seconds) ---
+US /register Avg:     0.0533s
+EU /register Avg:     0.2105s
+US /list Avg:         0.0503s
+EU /list Avg:         0.2449s
+
+Latency Analysis: 
+The difference between the two regions is largely due to geographic and physical network constraints from my location. 
+It is clear that the US endpoint consistently outperformed the European one because my cleint script was running locally in the US. 
+What was also interesting is that I could see the latency decrease as the servers warmed up and the data was brought to memory instead of disk.
+That was evident in the fact that the higher-count queries were still quicker, only because they were run after the initial queries.
+A short 10-run test was done last to demonstarte the differences between cold and warm servers. 
+
+

@@ -16,13 +16,13 @@ def measure_latency(func):
 @measure_latency
 async def fetch(session, url):
     async with session.get(url) as response:
-        await response.read
+        await response.read()
         return response
 
 
 async def main():
-    us_base = ''
-    eu_base = ''
+    us_base = 'http://136.119.136.176:8080'
+    eu_base = 'http://35.195.22.245:8080'
 
     async with aiohttp.ClientSession() as session:
         print("Starting Requests")
