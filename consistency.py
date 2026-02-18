@@ -3,8 +3,8 @@ import aiohttp
 import uuid
 
 # Configuration
-US_BASE = ""
-EU_BASE = ""
+US_BASE = 'http://34.170.46.156:8080'
+EU_BASE = 'http://34.76.194.253:8080'
 
 # Endpoints
 US_REGISTER = f"{US_BASE}/register"
