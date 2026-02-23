@@ -21,8 +21,8 @@ async def fetch(session, url):
 
 
 async def main():
-    us_base = 'http://34.170.46.156:8080'
-    eu_base = 'http://34.76.194.253:8080'
+    us_base = ''
+    eu_base = ''
 
     async with aiohttp.ClientSession() as session:
         print("Starting Requests")

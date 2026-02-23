@@ -1,0 +1,42 @@
+Implementation Description
+========================
+The backend of this system is implemented using Node.js and Express. It allows me to create a REST API to manage user registrations, running on GCP Cloud Compute Engine instances located in two different regions (US and EU). The data is stored using Google Cloud Datastore, which allows both regional instances to read from and write to a shared database.
+
+The Node.js server (server.js) exposes the following endpoints:
+- GET /greeting: A simple health check endpoint.
+- POST /register: Accepts a JSON payload with a username and saves it as a "User" entity in Datastore.
+- GET /list: Queries Datastore and returns a list of all registered usernames.
+- POST /clear: Clears all "User" entities from Datastore, which is primarily used to reset the database state between benchmark runs.
+
+To evaluate the system's performance, two asynchronous Python benchmark scripts were implemented using aiohttp and asyncio (for efficientely running many calls):
+1. Latency Benchmark: Measures the time it takes to hit the "/register" and "/list" endpoints for both the US and EU instances over multiple iterations.
+2. Consistency Benchmark: Stress-tests the system by simultaneously posting to the US instance and immediately reading from the EU instance to detect replication lag and verify eventual consistency. 
+
+File Structure
+==============
+- server.js
+  The main Node.js server application that initializes the Express app, connects to Google Cloud Datastore, and defines the API routes.
+
+- latency.py
+  A Python benchmark script that calculates the average response times for the US and EU instances across varying numbers of concurrent requests.
+
+- consistency.py
+  A Python benchmark script designed to test for replication lag by posting data to the US endpoint and immediately attempting to fetch it from the EU endpoint.
+
+- Analysis.txt
+  A text file containing the output results of the latency and consistency benchmarks, along with a written analysis of why the US instances performed faster and why replication lag was or wasn't observed.
+
+- IPs.txt
+  Contains the IP addresses and ports for the deployed US and EU Compute Engine instances.
+
+- Team_HW2.txt
+  Contains the my identifier (ramesh18).
+
+- package.json & package-lock.json
+  Defines the Node.js project metadata and manages dependencies, specifically `express`, `@google-cloud/datastore`, and `@google-cloud/firestore`.
+
+- requirements.txt
+  Lists the Python dependencies (aiohttp, asyncio) needed to run the benchmark scripts.
+
+- .gitignore
+  Standard Git ignore file specifying files and directories (like node_modules and logs) to be excluded from version control.
